@@ -6,11 +6,17 @@ package com.company;
 import java.text.NumberFormat;
 import java.util.Locale;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 import static java.lang.System.*;
 
 public class Main {
 
     public static void main(String[] args) {
+
+
+
+
+
         //My Variables
         //Using doubles in case of rates
         //Such as $9.25 or Hours such as
@@ -18,6 +24,7 @@ public class Main {
         String loopResponse, nameIn;
         double hours, rate, totalPay;
         Scanner input = new Scanner(in);
+
 
         try {
             //Begin program loop:
@@ -71,8 +78,13 @@ public class Main {
         }
         catch (Exception e)
         {
-            out.println("There was an error running your program!\n" +
-                    "Please try again.");
+            Main.infoBox("Unknown error in your response.\n" +
+                    "Please answer the questions accordingly and correctly.", "Error!");
         }
+    }
+
+    private static void infoBox(String infoMessage, String titleBar) {
+        JOptionPane.showMessageDialog(null, infoMessage, "InfoBox: " + titleBar, JOptionPane.INFORMATION_MESSAGE);
+
     }
 }
