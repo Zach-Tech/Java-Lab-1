@@ -55,24 +55,30 @@ public class Main {
 
 
                 //currency formatting + output
+
                 out.print(NumberFormat.getCurrencyInstance(new Locale("en",
-                        "US")).format(totalPay) + " is your weekly wage.\n# We calculated overtime if you " +
-                        "worked above 40 hours.\n# Have a great week " + firstIn + " " + lastIn);
+                        "US")).format(totalPay) +
+                        " is your weekly wage.");
+                out.println("\n######################" +
+                        "\n# We calculated overtime if you worked above 40 hours."
+                        +"\n# Have a great week " + firstIn + " " + lastIn);
 
                 //Loop query
-                out.println("Would the next employee like to run the program?\nY = Run again\nN = Exit");
+                out.println("######################");
+                out.print("# Would the next employee like to run the program?\n# Y = Run again\n# N = Exit"+
+                        "\n# Response: ");
                 loopResponse = input.next();
                 if (loopResponse.equalsIgnoreCase("y")) {
-                    out.println("\n\nThanks, we'll run it again, " + firstIn + " " + lastIn + "!\n");
+                    out.println("# Restarting program" +
+                            "\n######################\n\n\n");
+                    //loop if yes
                 }
                 else {
                     if (loopResponse.equalsIgnoreCase("n")) {
-                        out.println("\n\nThank you for using this application!"
-                                +"\n######################");
-
-                    }
+                        out.println("\n\nThank you for using this application!");}
                     else {
-                        out.println("\n\n\tImproper response!");
+                        out.println("\n\n\tPlease only answer with 'Y' or 'N'");
+                        break;
                     }
                     break;
                 }
@@ -81,12 +87,12 @@ public class Main {
         catch (Exception e)
         {
             Main.infoBox("Unknown error in your response.\n" +
-                    "Please answer the questions accordingly and correctly.", "Error!");
+                    "Please answer the questions accordingly and correctly.", "");
         }
     }
 
     private static void infoBox(String infoMessage, String titleBar) {
-        JOptionPane.showMessageDialog(null, infoMessage, "InfoBox: " + titleBar, JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, infoMessage, "Oops..." + titleBar, JOptionPane.INFORMATION_MESSAGE);
 
     }
 }
