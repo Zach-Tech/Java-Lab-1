@@ -13,35 +13,34 @@ public class Main {
 
     public static void main(String[] args) {
 
-
-
-
-
         //My Variables
         //Using doubles in case of rates
         //Such as $9.25 or Hours such as
         // 40.50
-        String loopResponse, nameIn;
+        String loopResponse, firstIn, lastIn;
         double hours, rate, totalPay;
         Scanner input = new Scanner(in);
 
-
         try {
             //Begin program loop:
+
             do {
-                //Name Request:
                 out.println("######################");
-                out.println("# Hi employee, input your name: ");
-                nameIn = input.nextLine();
+                out.print("# Hi employee, input your first name: ");
+                firstIn = input.next();
+
+                out.print("# Hi employee, input your last name: ");
+                lastIn = input.next();
 
                 //Hours worked request:
-                out.println("# How many hours did you work? \nEnter here: ");
+                out.print("\n# How many hours did you work? \nEnter here: ");
                 hours = input.nextDouble();
 
 
                 //Wage request:
-                out.println("How much do you make per hour?\nEnter here: ");
+                out.print("\nHow much do you make per hour?\nEnter here: ");
                 rate = input.nextDouble();
+
 
 
                 //Begin Calculations:
@@ -54,25 +53,28 @@ public class Main {
                                             (rate * 1.5));
                 }
 
+
                 //currency formatting + output
                 out.print(NumberFormat.getCurrencyInstance(new Locale("en",
                         "US")).format(totalPay) + " is your weekly wage.\n# We calculated overtime if you " +
-                        "worked above 40 hours.\n# Have a great week " + nameIn);
+                        "worked above 40 hours.\n# Have a great week " + firstIn + " " + lastIn);
+
                 //Loop query
                 out.println("Would the next employee like to run the program?\nY = Run again\nN = Exit");
                 loopResponse = input.next();
                 if (loopResponse.equalsIgnoreCase("y")) {
-                    out.println("\n\nHave a fantastic day, " + nameIn + "!");
-                    out.println("Continuing.");
+                    out.println("\n\nThanks, we'll run it again, " + firstIn + " " + lastIn + "!\n");
                 }
                 else {
                     if (loopResponse.equalsIgnoreCase("n")) {
-                        out.println("\n\nThank you for using this application!");
-                        break;}
+                        out.println("\n\nThank you for using this application!"
+                                +"\n######################");
+
+                    }
                     else {
                         out.println("\n\n\tImproper response!");
-                        break;
                     }
+                    break;
                 }
             } while (loopResponse.equalsIgnoreCase("Y"));
         }
